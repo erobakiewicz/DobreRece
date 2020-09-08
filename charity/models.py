@@ -8,7 +8,7 @@ class Category(models.Model):
     name = models.CharField(max_length=256)
 
     def __str__(self):
-        self.name
+        return self.name
 
 
 class Institution(models.Model):
@@ -17,6 +17,8 @@ class Institution(models.Model):
     type = models.PositiveSmallIntegerField(choices=Institutions.Choices, default=Institutions.Choices[0][0])
     categories = models.ManyToManyField(Category)
 
+    def __str__(self):
+        return self.name
 
 class Donation(models.Model):
     quantity = models.SmallIntegerField
@@ -30,3 +32,6 @@ class Donation(models.Model):
     pick_up_time = models.TimeField
     pick_up_comment = models.CharField(max_length=512)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+
+    def __str__(self):
+        return f'{self.user.username}, {self.quantity},{self.address}'

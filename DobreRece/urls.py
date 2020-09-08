@@ -20,10 +20,12 @@ from django.urls import path
 from django.views.generic import TemplateView
 
 from DobreRece import settings
+from charity.views import CategoryCreateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', TemplateView.as_view(template_name='index.html'), name='index'),
+    path('category/create/', CategoryCreateView.as_view(),name="create_category"),
 
     path('form/', TemplateView.as_view(template_name='form.html'), name='form'),
 

@@ -14,14 +14,14 @@
     <section id="stats" class="stats">
         <div class="container container--85">
             <div class="stats--item">
-                <em>10</em>
+                <em>{{ donation_counter }}</em>
                 <h3>Oddanych worków</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius est beatae, quod accusamus illum
                     tempora!</p>
             </div>
 
             <div class="stats--item">
-                <em>5</em>
+                <em>{{ institution_counter }}</em>
                 <h3>Wspartych organizacji</h3>
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam magnam, sint nihil cupiditate
                     quas quam.</p>
@@ -56,7 +56,7 @@
             </div>
         </div>
 
-        <a href="#" class="btn btn--large">Załóż konto</a>
+        <a href="{% url 'register' %}" class="btn btn--large">Załóż konto</a>
     </section>
 
     <section id="about-us" class="about-us">
@@ -84,47 +84,30 @@
                 się zajmują, komu pomagają i czego potrzebują.</p>
 
             <ul class="help--slides-items">
-                <li>
-                    <div class="col">
-                        <div class="title">Fundacja "Dbam o Zdrowie"</div>
-                        <div class="subtitle">Cel i misja: Pomoc dzieciom z ubogich rodzin.</div>
-                    </div>
-
-                    <div class="col">
-                        <div class="text">ubrania, jedzenie, sprzęt AGD, meble, zabawki</div>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="col">
-                        <div class="title">Fundacja “Dla dzieci"</div>
-                        <div class="subtitle">Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej.
+                {% for institution in institutions %}
+                    <li>
+                        <div class="col">
+                            <div class="title">{{ institution.name }}</div>
+                            <div class="subtitle">{{ institution.description }}</div>
                         </div>
-                    </div>
 
-                    <div class="col">
-                        <div class="text">ubrania, meble, zabawki</div>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="col">
-                        <div class="title">Fundacja “Bez domu”</div>
-                        <div class="subtitle">Cel i misja: Pomoc dla osób nie posiadających miejsca zamieszkania</div>
-                    </div>
-
-                    <div class="col">
-                        <div class="text">ubrania, jedzenie, ciepłe koce</div>
-                    </div>
-                </li>
+                        <div class="col">
+                            <div class="text">
+                                {% for category in institution.categories.all %}
+                                    {{ category.name }}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
             </ul>
-            <!-- Pagination
+
             <ul class="help--slides-pagination">
-              <li><a href="#" class="btn btn--small btn--without-border active" data-page="1">1</a></li>
-              <li><a href="#" class="btn btn--small btn--without-border" data-page="2">2</a></li>
-              <li><a href="#" class="btn btn--small btn--without-border" data-page="3">3</a></li>
+                <li><a href="#" class="btn btn--small btn--without-border active" data-page="1">1</a></li>
+                <li><a href="#" class="btn btn--small btn--without-border" data-page="2">2</a></li>
+                <li><a href="#" class="btn btn--small btn--without-border" data-page="3">3</a></li>
             </ul>
-            -->
+
         </div>
 
 
@@ -181,15 +164,15 @@
                 </li>
             </ul>
 
-            <!-- Pagination
+
             <ul class="help--slides-pagination">
-              <li><a href="#" class="btn btn--small btn--without-border active" data-page="1">1</a></li>
-              <li><a href="#" class="btn btn--small btn--without-border" data-page="2">2</a></li>
-              <li><a href="#" class="btn btn--small btn--without-border" data-page="3">3</a></li>
-              <li><a href="#" class="btn btn--small btn--without-border" data-page="4">4</a></li>
-              <li><a href="#" class="btn btn--small btn--without-border" data-page="5">5</a></li>
+                <li><a href="#" class="btn btn--small btn--without-border active" data-page="1">1</a></li>
+                <li><a href="#" class="btn btn--small btn--without-border" data-page="2">2</a></li>
+                <li><a href="#" class="btn btn--small btn--without-border" data-page="3">3</a></li>
+                <li><a href="#" class="btn btn--small btn--without-border" data-page="4">4</a></li>
+                <li><a href="#" class="btn btn--small btn--without-border" data-page="5">5</a></li>
             </ul>
-            -->
+
         </div>
 
         <!-- SLIDE 3 -->
@@ -220,12 +203,12 @@
                 </li>
             </ul>
 
-            <!-- Pagination
+
             <ul class="help--slides-pagination">
-              <li><a href="#" class="btn btn--small btn--without-border active" data-page="1">1</a></li>
-              <li><a href="#" class="btn btn--small btn--without-border" data-page="2">2</a></li>
+                <li><a href="#" class="btn btn--small btn--without-border active" data-page="1">1</a></li>
+                <li><a href="#" class="btn btn--small btn--without-border" data-page="2">2</a></li>
             </ul>
-            -->
+
         </div>
     </section>
 

@@ -1,3 +1,4 @@
+from django.contrib.auth.models import Group
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import View
@@ -13,7 +14,9 @@ class UserCreateView(View):
     def post(self, request):
         form = RegistrationForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save()
+            group = Group.objects.get(name='Donor')
+            user.groups.add(group)
         else:
             form = RegistrationForm()
             args = {'form': form}

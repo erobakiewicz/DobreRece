@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <section class="container--90">
+
+        <div align="center">
+
+            <h2>Konto użytkowniczki(ka) {{ user.username }}</h2>
+
+            <h1>Imię: {{ user.first_name }} </h1>
+            <h1>Nazwisko: {{ user.last_name }}</h1>
+            <h1>Email: {{ user.email }}</h1>
+            <h2></h2>
+        </div>
+
+    </section>
+
+{% endblock %}

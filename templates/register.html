@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% load static %}
 {% block content %}
 
     <section class="login-page">
@@ -9,32 +8,25 @@
             {{ form.non_field_errors }}
             <div class="form-group">
                 {{ form.subject.errors }}
-                <label for="{{ form.first_name.id_for_label }}"><h1>Imię:</h1></label>
                 {{ form.first_name }}
             </div>
             <div class="form-group">
                 {{ form.last_name.errors }}
-                <label for="{{ form.last_name.id_for_label }}"><h1>Nazwisko:</h1></label>
-
                 {{ form.last_name }}
             </div>
             <div class="form-group">
                 {{ form.email.errors }}
-                <label for="{{ form.email.id_for_label }}"><h1>Email:</h1></label>
-
                 {{ form.email }}
-
             </div>
+
             <div class="form-group">
                 {{ form.password1.errors }}
-                <label for="{{ form.password1.id_for_label }}"><h1>Hasło:</h1></label>
-
                 {{ form.password1 }}
             </div>
+
+
             <div class="form-group">
                 {{ form.password2.errors }}
-                <label for="{{ form.password2.id_for_label }}"><h1>Powtórz hasło:</h1></label>
-
                 {{ form.password2 }}
             </div>
 

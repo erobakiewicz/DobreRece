@@ -1,10 +1,17 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User, Group
+from django.contrib.auth.models import User
 
 
 class RegistrationForm(UserCreationForm):
-    email = forms.EmailField(required=True)
+    first_name = forms.CharField(required=True, label='first_name',
+                                 widget=forms.TextInput(attrs={'placeholder': 'Imię '}))
+    last_name = forms.CharField(required=True, label='last_name',
+                                widget=forms.TextInput(attrs={'placeholder': 'Nazwisko'}))
+    email = forms.EmailField(required=True, label='email',
+                             widget=forms.TextInput(attrs={'placeholder': 'Email'}))
+    password1 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Hasło'}))
+    password2 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Powtórz hasło'}))
 
     class Meta:
         model = User
@@ -24,9 +31,7 @@ class RegistrationForm(UserCreationForm):
         user.email = self.cleaned_data['email']
         user.username = self.cleaned_data['email']
 
-
         if commit:
             user.save()
 
         return user
-

@@ -22,6 +22,7 @@ from charity.views import CategoryCreateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
     path('', views.LandingPageView.as_view(template_name='index.html'), name='index'),
     path('category/create/', CategoryCreateView.as_view(), name="create_category"),
 

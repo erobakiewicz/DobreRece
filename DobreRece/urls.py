@@ -15,18 +15,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.views.generic import TemplateView
 
 from charity import views
-from charity.views import CategoryCreateView
+from charity.views import CategoryCreateView, DonationFormView, FormConfirmationView, DonationFormTestView
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls, name='admin'),
 
     path('', views.LandingPageView.as_view(template_name='index.html'), name='index'),
     path('category/create/', CategoryCreateView.as_view(), name="create_category"),
 
-    path('form/', TemplateView.as_view(template_name='form.html'), name='form'),
+    path('form/', DonationFormView.as_view(), name='form'),
+    path('form_test/', DonationFormTestView.as_view(), name='form_test'),
+
+    path('form_confirmation/', FormConfirmationView.as_view(), name='form_confirmation'),
 
     path("accounts/", include("accounts.urls")),
 

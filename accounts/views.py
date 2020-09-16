@@ -1,11 +1,12 @@
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import Group, User
 from django.contrib.auth.views import LoginView, LogoutView
-from django.shortcuts import render, redirect, get_object_or_404
-from django.urls import reverse
+from django.shortcuts import render, redirect
+from django.urls import reverse, reverse_lazy
 from django.views import View
-from django.views.generic import TemplateView, DetailView
+from django.views.generic import DetailView, UpdateView
 
 from accounts.forms import RegistrationForm
 
@@ -57,3 +58,10 @@ class UserProfileView(LoginRequiredMixin, DetailView):
 
     def get_object(self):
         return self.request.user
+
+class UpdateUserView(LoginRequiredMixin, UpdateView):
+    template_name = 'EditUser.html'
+    success_url = reverse_lazy("userprofile")
+    model = User
+    fields = ["first_name", "last_name","email"]
+

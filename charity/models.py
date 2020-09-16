@@ -20,6 +20,10 @@ class Institution(models.Model):
     def __str__(self):
         return self.name
 
+    @property
+    def category_ids(self):
+        return ','.join([str(x.id) for x in self.categories.all()])
+
 
 class Donation(models.Model):
     quantity = models.SmallIntegerField()

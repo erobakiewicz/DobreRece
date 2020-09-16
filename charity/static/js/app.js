@@ -222,6 +222,26 @@ document.addEventListener("DOMContentLoaded", function() {
       this.$step.innerText = this.currentStep;
 
       // TODO: Validation
+      if (this.currentStep === 3) {
+        var checkboxes = document.querySelectorAll("input[name=categories]");
+        var selectedCategoryIds = [];
+        for (var i=0; i < checkboxes.length; i++) {
+            if (checkboxes[i].checked) {
+                selectedCategoryIds.push(checkboxes[i].value)
+            }
+        }
+        console.log(selectedCategoryIds, 'selectedCateogryIds');
+        var inst = document.querySelectorAll('input[name=institution]');
+        for (var i=0; i < inst.length; i++) {
+            var currentInstitutionCategories = inst[i].dataset.categoryIds.split(',')
+            console.log(currentInstitutionCategories, "current inst")
+            inst[i].parentElement.parentElement.style.display = 'block';
+
+            if (!currentInstitutionCategories.filter(value => selectedCategoryIds.includes(value)).length) {
+                inst[i].parentElement.parentElement.style.display = 'none';
+            }
+        }
+      }
 
       this.slides.forEach(slide => {
         slide.classList.remove("active");
@@ -235,7 +255,38 @@ document.addEventListener("DOMContentLoaded", function() {
       this.$step.parentElement.hidden = this.currentStep >= 6;
 
       // TODO: get data from inputs and show them in summary
-    }
+       if (this.currentStep == 5) {
+        var bags = document.querySelector('input[name=quantity]');
+        var summaryInstitution = document.getElementsByClassName('summary--text')[1]
+
+        var institutions = document.querySelectorAll('input[name=institution]');
+            for (var i=0; i < institutions.length; i++) {
+                if (institutions[i].checked){
+                    var descr = institutions[i].nextElementSibling.nextElementSibling.children[0].innerText
+                    summaryInstitution.innerText = descr
+                }
+        }
+
+        var summaryBags = document.getElementsByClassName('summary--text')[0]
+        summaryBags.innerText = bags.value + ' worki/ów'
+
+        var street = document.querySelector('input[name=address]');
+        var city = document.querySelector('input[name=city]');
+        var postcode = document.querySelector('input[name=zip_code]');
+        var phone = document.querySelector('input[name=phone_number]');
+        var data = document.querySelector('input[name=pick_up_date]');
+        var time = document.querySelector('input[name=pick_up_time]');
+        var moreInfo = document.querySelector('textarea[name=pick_up_comment]');
+
+        document.getElementById('address').innerHTML = street.value;
+        document.getElementById('city').innerText = city.value;
+        document.getElementById('postcode').innerText = postcode.value;
+        document.getElementById('phone').innerText = phone.value;
+        document.getElementById('data').innerHTML = data.value;
+        document.getElementById('time').innerHTML = time.value;
+        document.getElementById('info').innerText = moreInfo.value;
+      }
+  }
 
     /**
      * Submit form
@@ -243,7 +294,6 @@ document.addEventListener("DOMContentLoaded", function() {
      * TODO: validation, send data to server
      */
     submit(e) {
-      e.preventDefault();
       this.currentStep++;
       this.updateForm();
     }

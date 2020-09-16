@@ -7,13 +7,33 @@
         <div align="center">
 
             <h2>Konto użytkowniczki(ka) {{ user.username }}</h2>
+            <a style="color:gray" href="{% url 'editprofile' user.id %}">Zmień dane</a>
 
             <h1>Imię: {{ user.first_name }} </h1>
             <h1>Nazwisko: {{ user.last_name }}</h1>
             <h1>Email: {{ user.email }}</h1>
             <h2></h2>
-        </div>
+            <div align="center">
+                <h1>Lista darów użytkownika:</h1>
 
+                {% for donation in user.donation_set.all %}
+                    <h1>Dar {{ donation.id }}:</h1>
+                    <ul style="color:gray;font-size:20px">
+                        <li>ilość worków: {{ donation.quantity }}</li>
+                        <li>przekazane do: {{ donation.institution }}</li>
+                        <li>
+                            rodzaj darów:
+                            {% for category in donation.categories.all %}
+                                {{ category.name }}
+                            {% endfor %}
+                        </li>
+                        <li> data odbioru dnia {{ donation.pick_up_date }}, o
+                            godzinie {{ donation.pick_up_time }}</li>
+                    </ul>
+                {% endfor %}
+            </div>
+        </div>
+        <h2></h2>
     </section>
 
 {% endblock %}

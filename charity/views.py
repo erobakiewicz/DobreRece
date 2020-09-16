@@ -1,7 +1,9 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Sum
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, TemplateView
+from django.views.generic import CreateView, TemplateView, FormView
 
+from charity.forms import DonationForm
 from charity.models import Category, Donation, Institution
 
 
@@ -19,7 +21,44 @@ class LandingPageView(TemplateView):
         return ctx
 
 
+class DonationFormView(LoginRequiredMixin, FormView):
+    form_class = DonationForm
+    template_name = 'form.html'
+    success_url = reverse_lazy('form_confirmation')
 
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs.update({'user': self.request.user})
+        return kwargs
+
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        raise Exception
+        return super().form_invalid(form)
+
+
+class DonationFormTestView(LoginRequiredMixin, FormView):
+    form_class = DonationForm
+    template_name = 'form_test.html'
+    success_url = reverse_lazy('form_confirmation')
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs.update({'user': self.request.user})
+        return kwargs
+
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        return super().form_invalid(form)
+
+class FormConfirmationView(TemplateView):
+    template_name = "form-confirmation.html"
 
 
 class CategoryCreateView(CreateView):

@@ -109,9 +109,24 @@
                 <li><a href="#" class="btn btn--small btn--without-border active" data-page="1">1</a></li>
             </ul>
 
-
         </div>
+<ul class="pagination" class="help--slides-pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <li><a href="?page=1" class="btn btn--small btn--without-border active" data-page="?page=1">&laquo; pierwsza</a></li>
+            <li><a href="?page={{ page_obj.previous_page_number }}" class="btn btn--small btn--without-border active" data-page="?page={{ page_obj.previous_page_number }}">poprzednia</a></li>
+        {% endif %}
 
+        <span class="current" class="btn btn--small btn--without-border active">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+          <li>  <a href="?page={{ page_obj.next_page_number }}" class="btn btn--small btn--without-border active">następna</a></li>
+          <li>  <a href="?page={{ page_obj.paginator.num_pages }}" class="btn btn--small btn--without-border active">ostatnia &raquo;</a></li>
+        {% endif %}
+    </span>
+</ul>
 
         <!-- SLIDE 2 -->
         <div class="help--slides" data-id="2">

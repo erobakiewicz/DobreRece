@@ -4,10 +4,9 @@ from charity.models import Donation
 
 
 class DonationForm(forms.ModelForm):
-
     class Meta:
         model = Donation
-        exclude = ('user', )
+        exclude = ('user',)
 
     def __init__(self, *args, **kwargs):
         self.user = kwargs.pop('user', None)

@@ -230,11 +230,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 selectedCategoryIds.push(checkboxes[i].value)
             }
         }
-        console.log(selectedCategoryIds, 'selectedCateogryIds');
         var inst = document.querySelectorAll('input[name=institution]');
         for (var i=0; i < inst.length; i++) {
             var currentInstitutionCategories = inst[i].dataset.categoryIds.split(',')
-            console.log(currentInstitutionCategories, "current inst")
             inst[i].parentElement.parentElement.style.display = 'block';
 
             if (!currentInstitutionCategories.filter(value => selectedCategoryIds.includes(value)).length) {

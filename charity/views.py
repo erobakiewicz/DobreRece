@@ -1,7 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.core.paginator import Paginator
 from django.db.models import Sum
-from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, TemplateView, FormView, ListView
 
@@ -24,7 +22,6 @@ class LandingPageView(ListView):
             ctx['donation_counter'] = 0
         ctx['institution_counter'] = Institution.objects.filter(donation__quantity__gte=1).distinct().count()
         return ctx
-
 
 
 class DonationFormView(LoginRequiredMixin, FormView):

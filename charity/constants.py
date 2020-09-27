@@ -5,6 +5,6 @@ class Institutions:
 
     Choices = (
         (Fundacja, "Fundacja"),
-        (Organizacja_pozarządowa,"Organizacja pozarządowa"),
+        (Organizacja_pozarządowa, "Organizacja pozarządowa"),
         (Zbiórka_lokalna, "Zbiórka lokalna"),
     )

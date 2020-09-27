@@ -32,7 +32,7 @@ header {
       @include medium {
         width: 75%;
       }
-      
+
       @include large {
         width: 60%;
       }
@@ -55,7 +55,7 @@ header {
       margin-top: 80px;
 
       li {
-        display: flex; 
+        display: flex;
         width: 100%;
         justify-content: center;
 
@@ -69,6 +69,7 @@ header {
           padding-right: 25px;
           justify-content: flex-end;
         }
+
         &:nth-child(2) {
           padding-left: 25px;
           justify-content: flex-start;
@@ -113,7 +114,7 @@ header {
             @include openSans(300);
           }
 
-          em { 
+          em {
             font-size: 2.5rem;
             font-style: normal;
           }

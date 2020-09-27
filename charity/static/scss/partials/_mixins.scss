@@ -13,10 +13,10 @@
 
 @mixin transition($type: all, $time: $transition-time, $efect: ease-in-out) {
   transition: $type $time $efect;
-}  
+}
 
 
-@mixin headerDecoration(){
+@mixin headerDecoration() {
   &:after {
     content: "";
     display: block;
@@ -29,7 +29,7 @@
   }
 }
 
-@mixin container($width, $margin: 0 auto, $padding: 0 30px){
+@mixin container($width, $margin: 0 auto, $padding: 0 30px) {
   max-width: $width;
   width: 100%;
   padding: $padding;
@@ -39,7 +39,7 @@
 
 // ***** RWD *****
 @mixin large() {
-  @media screen and (min-width: 1230px){
+  @media screen and (min-width: 1230px) {
     @content;
   }
 }

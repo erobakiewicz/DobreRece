@@ -1,5 +1,5 @@
 # DobreRece
-Charity service webapp: taking individual donnations and sending them to specific organizations e.g. foundations, charities etc.
+Charity service web app: taking individual donations and sending them to specific organizations e.g. foundations, charities, and local organizations.
 
 
 # Functionalities
@@ -9,14 +9,14 @@ The app is written in python and JS using the Django framework and Bootstrap.
 - guest view, log-in, and log-out
 - registration
 - user profile update and delete
-- user profile lists user donnations
+- user profile lists user donations
 - password change form via email
 - password reminder via email
 
 # General functionalities:
-- CRUD for all the organizations, donnations
-- landing page includes counter of donnations and organizations that recived them
-- landing page includes list filtering 3 types of organizations in separate columns
+- CRUD for all the organizations, donations
+- landing page includes a counter of donations and organizations that received them
+- landing page includes a list filtering 3 types of organizations in separate columns
 
 # requirements.txt
 ```sh

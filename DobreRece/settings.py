@@ -13,6 +13,8 @@ import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+from django.conf.global_settings import DATABASES
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
@@ -71,16 +73,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'DobreRece.wsgi.application'
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'charitydonation',
-        'USER': 'postgres',
-        'PASSWORD': 'coderslab',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'charitydonation',
+#         'USER': 'postgres',
+#         'PASSWORD': 'coderslab',
+#         'HOST': '127.0.0.1',
+#         'PORT': '5432',
+#     }
+# }
 
 
 # Password validation
@@ -123,3 +125,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 STATIC_URL = '/static/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+import dj_database_url
+DATABASES['default'] = dj_database_url.config(default='postgres://wthxdxuzevvzwk:f44c61736f50d03c9a30110de8942217e1fc984fb636e20163473af1e28141f8@ec2-54-75-199-252.eu-west-1.compute.amazonaws.com:5432/d306v48g9adkue',conn_max_age=600, ssl_require=True)

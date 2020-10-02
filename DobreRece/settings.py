@@ -71,14 +71,21 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'DobreRece.wsgi.application'
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'charitydonation',
+#         'USER': 'postgres',
+#         'PASSWORD': 'coderslab',
+#         'HOST': '127.0.0.1',
+#         'PORT': '5432',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'charitydonation',
-        'USER': 'postgres',
-        'PASSWORD': 'coderslab',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'dobrerece',
     }
 }
 

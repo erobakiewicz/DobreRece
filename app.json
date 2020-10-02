@@ -1,7 +1,6 @@
-
 {
-  "name": "dobre-rece",
-  "description": "A simple project of charity donation website",
+  "name": "Dobre-rece",
+  "description": "A simple project of charity donation website.",
   "repository": "https://github.com/erobakiewicz/DobreRece",
   "keywords": [
     "python",

@@ -1,6 +1,11 @@
 # DobreRece
 Charity service web app: taking individual donations and sending them to specific organizations e.g. foundations, charities, and local organizations.
 
+# See the app on Heroku
+<a href="https://heroku.com/deploy">
+  <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy">
+</a>
+
 
 # Functionalities
 The app is written in python and JS using the Django framework and Bootstrap.

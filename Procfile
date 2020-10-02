@@ -1,1 +1,1 @@
-web: gunicorn DobreRece.wsgi --log-file -
+web: gunicorn DobreRece.wsgi

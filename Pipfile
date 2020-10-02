@@ -34,6 +34,8 @@ urllib3 = "==1.25.8"
 webencodings = "==0.5.1"
 Django = "==3.1.2"
 CacheControl = "==0.12.6"
+whitenoise = "==5.2.0"
+toml = "==0.10.1"
 
 [requires]
 python_version = "3.8"

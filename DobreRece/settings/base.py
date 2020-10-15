@@ -12,21 +12,26 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 import os
 from pathlib import Path
 
+import environ
+
+env = environ.Env()
+# reading .env file
+environ.Env.read_env()
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 from django.conf.global_settings import DATABASES
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '263fgwxe(!ai)&ro1prznufzl4-tvkad(m17)2urnb0_a03$43'
-
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
+SECRET_KEY = env("SECRET_KEY")
 ALLOWED_HOSTS = ['dobrerece.herokuapp.com','127.0.0.1']
+
 
 # Application definition
 
@@ -57,8 +62,7 @@ ROOT_URLCONF = 'DobreRece.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
-        ,
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -72,17 +76,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'DobreRece.wsgi.application'
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'charitydonation',
-#         'USER': 'postgres',
-#         'PASSWORD': 'coderslab',
-#         'HOST': '127.0.0.1',
-#         'PORT': '5432',
-#     }
-# }
 
 
 # Password validation

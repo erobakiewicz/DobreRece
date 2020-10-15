@@ -9,7 +9,6 @@ from charity.models import Category, Donation, Institution
 
 
 class LandingPageView(ListView):
-    paginate_by = 2
     model = Institution
 
     def get_context_data(self, *args, **kwargs):
